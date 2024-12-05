@@ -19,10 +19,17 @@ Lo-fi and High-fi for the app
 https://www.figma.com/design/In4LR2sPy6dBHH71tMT5Tw/C346_L07_GaikHwa?node-id=1-174&t=VYYxZhCUDP7NvwC8-1
 
 Screenshots of the app:
-Home: (./AppImage/Home.jpg)
-EditCurrency: (./AppImage/EditCurrency.jpg)
-AddCurrency: (./AppImage/AddCurrency.jpg)
-Calculator: (./AppImage/Calculator.jpg)
+Home:
+![Screenshot2](./AppImage/Home.jpg)
+
+EditCurrency: 
+![Screenshot2](./AppImage/EditCurrency.jpg)
+
+AddCurrency:
+![Screenshot3](./AppImage/AddCurrency.jpg)
+
+Calculator:
+![Screenshot4](./AppImage/Calculator.jpg)
 
 Video walkthrough of the app:
 https://www.youtube.com/watch?v=V4cp4hZPSmg 
