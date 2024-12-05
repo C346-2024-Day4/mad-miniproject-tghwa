@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=V4cp4hZPSmg
 ------------
 
 Feel free to download this app to your phone:
-Link to APK file of the app: [Download APK](./AppImage/Currency Calculator.apk)
+Link to APK file of the app: ![Download APK](./AppImage/Currency Calculator.apk)
 
 
 
