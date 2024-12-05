@@ -5,37 +5,30 @@ import {CurrencyList} from "./Data";
 const EditCurrency = ({navigation, route}) => {
 
     const country = route.params.object;
-    const [currency, setCurrency] = useState(country.currency);
+    const [rate, setRate] = useState(country.rate);
 
     return (
         <View style={styles.container}>
-            <Image source={{uri: country.image}} />
-            <Text style={styles.label}>Country: {country.name}</Text>
-
-            <Text style={styles.label}>Currency:</Text>
+            <Text style={styles.label}>Currency Name: {country.country}</Text>
+            <Image source={{uri: country.image}} style={styles.imageStyle}/>
+            <Text style={styles.label}>Currency Rate:</Text>
             <TextInput
                 style={styles.input}
-                value={currency}
-                onChangeText={setCurrency}
-                placeholder="Enter currency..."
-            />
+                value={rate}
+                onChangeText={setRate}
+                placeholder="Enter rate..."
+            />r
             <View style={{flexDirection: 'row'}}>
                 <View style={{margin:10, flex:1}}>
                     <Button title="Save" onPress={() => {
-                        let indexnum = 0
-                        if (route.params.type === "1 December 2024") {
-                            indexnum = 1;
-                        } else if (route.params.type === '2 December 2024') {
-                            indexnum = 2;
-                        }
-                        const updatedCurrency = {
+                        let indexnum = CurrencyList.findIndex(item => item.area === route.params.type);
+
+                        const updatedRate = {
                             ...country, // Preserve other properties (if any)
-                            country: CountryName,
-                            image: CountryImage,
-                            currency: CountryCurrency,
+                            rate: rate,
                         };
 
-                        CurrencyList[indexnum].data[route.params.index] = updatedCurrency;
+                        CurrencyList[indexnum].data[route.params.index] = updatedRate;
 
                         navigation.navigate("Home");
                     }
@@ -43,12 +36,8 @@ const EditCurrency = ({navigation, route}) => {
                 </View>
                 <View style={{margin:10, flex:1}}>
                     <Button title="Delete" onPress={()=>{
-                        let indexnum = 0
-                        if (route.params.type === "1 December 2024") {
-                            indexnum = 1;
-                        } else if (route.params.type === '2 December 2024') {
-                            indexnum = 2;
-                        }
+                        let indexnum = CurrencyList.findIndex(item => item.area === route.params.type);
+
                         Alert.alert("Are you sure?",'',
                             [{text:'Yes', onPress:() => {
                                     CurrencyList[indexnum].data.splice(route.params.index, 1);
@@ -71,13 +60,27 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         marginBottom: 10,
+        fontWeight: "bold",
+        padding: 5,
     },
     input: {
+        height: 50,
         borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        padding: 10,
+        borderColor: 'lightgrey',
+        borderRadius: 25,
+        paddingLeft: 15,
         marginBottom: 20,
+        fontSize: 18,
+        backgroundColor: 'white',
+    },
+    imageStyle: {
+        height: 125,
+        width: '50%',
+        resizeMode: 'stretch',
+        backgroundColor: 'black',
+        borderRadius: 5,
+        marginVertical: 10,
+        marginHorizontal: 20,
     },
 });
 

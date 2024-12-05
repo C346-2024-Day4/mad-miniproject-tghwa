@@ -1,5 +1,6 @@
-import React from 'react';
-import { Text, View, StyleSheet, SectionList, Button, Alert, Image, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, SectionList, Button, Image, TouchableOpacity, StatusBar} from 'react-native';
+
 import { CurrencyList } from './Data';
 
 const styles = StyleSheet.create({
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginHorizontal: 20,
     },
+
     textStyle: {
         fontSize: 15,
         textAlign: 'center',
@@ -22,50 +24,59 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     imageStyle: {
-        height: 250,
-        width: '100%',
-        resizeMode: 'contain',
+        height: 100,
+        width: '40%',
+        resizeMode: 'stretch',
         backgroundColor: 'black',
+        borderRadius: 5,
+        marginVertical: 10,
+        marginHorizontal: 20,
     },
     container: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        marginBottom: 20,
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey',
     },
 });
 
 const Home = ({ navigation }) => {
-    const renderItem = ({item, index, section}) => (
-        item ? (
-            <TouchableOpacity style={styles.opacityStyle}
-                              onPress={() => {
-                                  navigation.navigate('EditCurrency', {index:index, type: section.date , object: item});
-                              }
-                              }>
+    const renderItem = ({ item, index, section }) => {
+        return (
+            <TouchableOpacity
+                style={styles.opacityStyle}
+                onPress={() => navigation.navigate('EditCurrency', {
+                    index: index,
+                    type: section.area,
+                    object: item
+                })}
+            >
                 <View style={styles.container}>
+                    <Image source={{uri: item.image}} style={styles.imageStyle}/>
                     <Text style={styles.textStyle}>{item.country}</Text>
-                    <Image source={item.image} />
                     <Text style={styles.textStyle}>{item.rate}</Text>
                 </View>
             </TouchableOpacity>
-        ) : null
-    );
-
-    console.log('CurrencyList:', CurrencyList);
+        )};
 
     return (
-        <View>
+        <View style={{flex: 1}}>
+
             <View style={styles.buttonContainer}>
                 <StatusBar />
-                <Button title="Add Item" onPress={() => navigation.navigate('AddPokemon')} />
+                <Button title="Currency Calculator" onPress={() => navigation.navigate('Calculator')} />
+                <Text></Text>
+                <Button title="Add Currency" onPress={() => navigation.navigate('AddCurrency')} />
             </View>
-            <SectionList
-                sections={CurrencyList || []}
+            <SectionList contentContainerStyle={{padding:20}}
+                sections={CurrencyList}
                 renderItem={renderItem}
                 renderSectionHeader={({ section }) => (
-                    section.title && <Text style={styles.headertext}>{section.title}</Text>
+                    <Text style={styles.headertext}>{section.area}</Text>
                 )}
-                keyExtractor={(item, index) => item?.country + index}
             />
         </View>
     );

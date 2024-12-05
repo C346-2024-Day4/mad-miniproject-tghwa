@@ -1,17 +1,17 @@
 const CurrencyList = [
     {
         data: [
-            { country: 'Euro', image: require('./FlagImage/European Union.webp'), rate: 0.94743 },
-            { country: 'British Pound', image: require('./FlagImage/United Kingdom.webp'), rate: 0.78945 },
+            { country: 'British Pound', image: ('https://flagpedia.net/data/flags/w160/gb.webp'), rate: 0.59 },
+            { country: 'Euro', image: ('https://flagpedia.net/data/flags/w160/fr.webp'), rate: 0.69 },
         ],
-        date: "1 December 2024"
+        area: "Europe"
     },
     {
         data: [
-            { country: 'Japanese Yen', image: require('./FlagImage/Japan.webp'), rate: 151.51 },
-            { country: 'Canadian Dollar', image: require('./FlagImage/Canada.webp'), rate: 1.4020 },
+            { country: 'Japanese Yen', image: ('https://flagpedia.net/data/flags/w160/jp.webp'), rate: 100 },
+            { country: 'Ringgit', image: ('https://flagpedia.net/data/flags/w160/my.webp'), rate: 3.3 },
         ],
-        date: "2 December 2024"
+        area: "Asia"
     },
 ];
 
